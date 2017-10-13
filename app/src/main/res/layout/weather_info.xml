@@ -57,9 +57,9 @@
 <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/title"
+        android:layout_below="@id/title"
         android:background="@drawable/biz_plugin_weather_shenzhen_bg"
-        android:orientation="vertical">
+        android:orientation="vertical" >
         <!--今日天气信息-->
         <RelativeLayout
             android:id="@+id/weather_today"
@@ -93,7 +93,7 @@
                     android:textSize="15dp" />
                     <!--当前温度-->
             <TextView
-                android:id="@+id/temperature_now"
+                android:id="@+id/fengxiang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -101,16 +101,16 @@
                 android:layout_marginLeft="15.0dp"
                 android:layout_marginTop="5dp"
                 android:maxLines="1"
-                android:text="当前温度：32℃"
+                android:text="西南风"
                 android:textColor="@android:color/white"
                 android:textSize="15.dp" />
                 <!--湿度信息-->
                 <TextView
-                    android:id="@+id/humility"
+                    android:id="@+id/humidity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:layout_below="@+id/temperature_now"
+                    android:layout_below="@+id/fengxiang"
                     android:layout_marginLeft="15.0dp"
                     android:layout_marginTop="5dp"
                     android:maxLines="1"
@@ -179,7 +179,7 @@
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
                  android:layout_alignParentLeft="true"
-                 android:layout_below="@+id/humility"
+                 android:layout_below="@+id/humidity"
                  android:layout_centerInParent="true"
                  android:layout_marginTop="5dp">
                   <ImageView
@@ -233,12 +233,7 @@
                          android:textColor="@android:color/white"
                          android:textSize="20.0dp"/>
 
-
-
-
-
              </RelativeLayout>
-
 
         </RelativeLayout>
 
