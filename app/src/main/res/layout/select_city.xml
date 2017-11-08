@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
    <RelativeLayout
+       android:id="@+id/select_title"
        android:layout_width="match_parent"
        android:layout_height="45dp"
        android:background="#ffcd2626">
@@ -29,6 +30,13 @@
            android:layout_toRightOf="@+id/title_back"
            android:background="#A71717"
            android:gravity="center"/>
-
    </RelativeLayout>
+    <ListView
+        android:id="@+id/title_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/select_title"
+        android:background="#ffffffff">
+
+    </ListView>
 </RelativeLayout>
