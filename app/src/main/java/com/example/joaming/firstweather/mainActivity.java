@@ -10,6 +10,7 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.joaming.firstweather.util.NetUtil;
@@ -85,7 +86,9 @@ public class mainActivity extends Activity implements View.OnClickListener {
             startActivityForResult(i,1);
         }
         if (view.getId() == R.id.title_update_btn) {
-
+            view.setVisibility(View.INVISIBLE);
+            ProgressBar mUpadeprogress=(ProgressBar)findViewById(R.id.title_update_btn_progress);
+            mUpadeprogress.setVisibility(mUpadeprogress.VISIBLE);
             SharedPreferences sharedPreferences = getSharedPreferences("config", MODE_PRIVATE);
             String cityCode = sharedPreferences.getString("main_city_code", "101010100");
             Log.d("myWeather", cityCode);
@@ -282,6 +285,11 @@ public class mainActivity extends Activity implements View.OnClickListener {
         climateTv.setText("N/A");
         windTv.setText("N/A");
         fengxiangTv.setText("N/A");
+        SharedPreferences settings = (SharedPreferences)getSharedPreferences("config", MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString("city_name","北京");
+        editor.putString("main_city_code", "101010100");
+        editor.commit();
     }
     void updateTodayWeather(TodayWeather todayWeather){
         city_name_Tv.setText(todayWeather.getCity()+"天气");
@@ -289,6 +297,11 @@ public class mainActivity extends Activity implements View.OnClickListener {
         timeTv.setText(todayWeather.getUpdatetime()+"发布");
         humidityTv.setText("湿度："+todayWeather.getShidu());
         pmDataTv.setText(todayWeather.getPm25());
+        SharedPreferences settings = (SharedPreferences)getSharedPreferences("config", MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+        String ss=(String)city_name_Tv.getText();
+        editor.putString("city_name",ss);
+        editor.commit();
         try{
             int pmDate=Integer.parseInt(todayWeather.getPm25());
             if(pmDate>=0&&pmDate<=50){
@@ -378,6 +391,10 @@ public class mainActivity extends Activity implements View.OnClickListener {
         climateTv.setText(todayWeather.getType());
         windTv.setText("风力:"+todayWeather.getFengli());
         fengxiangTv.setText(todayWeather.getFengxiang());
+        ProgressBar mUpadeprogress=(ProgressBar)findViewById(R.id.title_update_btn_progress);
+        mUpadeprogress.setVisibility(mUpadeprogress.INVISIBLE);
+        View view1=(View)findViewById(R.id.title_update_btn);
+        view1.setVisibility(view1.VISIBLE);
         Toast.makeText(mainActivity.this,"更新成功！",Toast.LENGTH_SHORT).show();
     }
 

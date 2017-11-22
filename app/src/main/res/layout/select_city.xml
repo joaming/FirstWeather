@@ -6,7 +6,9 @@
        android:id="@+id/select_title"
        android:layout_width="match_parent"
        android:layout_height="45dp"
-       android:background="#ffcd2626">
+       android:background="#ffcd2626"
+       android:layout_alignParentTop="true"
+       android:layout_alignParentStart="true">
        <TextView
            android:id="@+id/title_name"
            android:layout_width="match_parent"
@@ -31,12 +33,32 @@
            android:background="#A71717"
            android:gravity="center"/>
    </RelativeLayout>
+    <LinearLayout
+        android:layout_below="@+id/select_title"
+        android:id="@+id/search_selectCityP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <com.example.joaming.firstweather.ClearEditText
+            android:id="@+id/search_selectCity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4.0dp"
+            android:hint="输入城市中文，大写全拼"
+            android:drawableLeft="@drawable/magnifying_glass"
+            android:drawablePadding="6dp"
+            android:maxLines="1"
+            android:textColor="#ff000000"
+            android:textColorHint="#ffcccccc"
+            android:textSize="15.dp"
+            android:background="@drawable/contact_search_box_edittext_keyword_background"
+            />
+    </LinearLayout>
     <ListView
         android:id="@+id/title_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/select_title"
+        android:layout_below="@+id/search_selectCityP"
         android:background="#ffffffff">
-
     </ListView>
 </RelativeLayout>
