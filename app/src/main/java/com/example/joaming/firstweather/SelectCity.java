@@ -49,6 +49,19 @@ public class SelectCity extends Activity implements View.OnClickListener {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 filterData(s.toString());
                 mList.setAdapter(adapter);
+                mList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        City city=filterDataList.get(position);
+                        SharedPreferences.Editor editor = getSharedPreferences("config",MODE_PRIVATE).edit();
+                        editor.putString("main_city_code",city.getNumber());
+                        editor.commit();
+                        Intent i =new Intent();
+                        i.putExtra("cityCode",city.getNumber());
+                        setResult(RESULT_OK,i);
+                        finish();
+                    }
+                });
 
             }
 
@@ -72,10 +85,6 @@ public class SelectCity extends Activity implements View.OnClickListener {
     public void onClick(View v){
         switch(v.getId()){
             case R.id.title_back:
-//                Intent i=new Intent();
-//                i.putExtra("cityCode","101160101");
-//                setResult(RESULT_OK,i);
-                finish();
                 break;
             default:
                 break;
@@ -113,7 +122,7 @@ public class SelectCity extends Activity implements View.OnClickListener {
             }
         });
     }
-    //
+
     private void filterData(String filterStr){
         filterDataList=new ArrayList<City>();
         if(TextUtils.isEmpty(filterStr)){
