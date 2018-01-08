@@ -54,6 +54,9 @@ public class mainActivity extends Activity implements View.OnClickListener,ViewP
             temperatureTv, climateTv, windTv, city_name_Tv,fengxiangTv;
     private ImageView weatherImg, pmImg;
 
+//    private ImageView weather_imgW;
+//    private TextView temperatureW,climateW;
+
     private  TextView[] week_next;
     private  ImageView[] imageView_next;
     private TextView[]  temperature_next;
@@ -516,6 +519,12 @@ public class mainActivity extends Activity implements View.OnClickListener,ViewP
         editor.commit();
     }
     void updateTodayWeather(TodayWeather todayWeather){
+
+
+
+
+
+
         city_name_Tv.setText(todayWeather.getCity()+"天气");
         cityTv.setText(todayWeather.getCity());
         timeTv.setText(todayWeather.getUpdatetime()+"发布");
@@ -902,63 +911,98 @@ public class mainActivity extends Activity implements View.OnClickListener,ViewP
         switch (todayWeather.getType()){
             case "暴雪":
                 weatherImg.setImageResource(R.drawable.biz_plugin_weather_baoxue);
+//                weather_imgW.setImageResource(R.drawable.biz_plugin_weather_baoxue);
                 break;
             case "暴雨":
                 weatherImg.setImageResource(R.drawable.biz_plugin_weather_baoyu);
+//                weather_imgW.setImageResource(R.drawable.biz_plugin_weather_baoyu);
                 break;
             case "大暴雨":
                 weatherImg.setImageResource(R.drawable.biz_plugin_weather_dabaoyu);
+//                weather_imgW.setImageResource(R.drawable.biz_plugin_weather_dabaoyu);
                 break;
             case "大雪":
                 weatherImg.setImageResource(R.drawable.biz_plugin_weather_daxue);
+//                weather_imgW.setImageResource(R.drawable.biz_plugin_weather_daxue);
                 break;
             case "大雨":
                 weatherImg.setImageResource(R.drawable.biz_plugin_weather_dayu);
+//                weather_imgW.setImageResource(R.drawable.biz_plugin_weather_dayu);
                 break;
             case "多云":
                 weatherImg.setImageResource(R.drawable.biz_plugin_weather_duoyun);
+//                weather_imgW.setImageResource(R.drawable.biz_plugin_weather_duoyun);
+
                 break;
             case "雷阵雨":
                 weatherImg.setImageResource(R.drawable.biz_plugin_weather_leizhenyu);
+//                weather_imgW.setImageResource(R.drawable.biz_plugin_weather_leizhenyu);
+
                 break;
             case "雷阵雨冰雹":
                 weatherImg.setImageResource(R.drawable.biz_plugin_weather_leizhenyubingbao);
+//                weather_imgW.setImageResource(R.drawable.biz_plugin_weather_leizhenyubingbao);
+
                 break;
             case "晴":
                 weatherImg.setImageResource(R.drawable.biz_plugin_weather_qing);
+//                weather_imgW.setImageResource(R.drawable.biz_plugin_weather_qing);
+
                 break;
             case "沙尘暴":
                 weatherImg.setImageResource(R.drawable.biz_plugin_weather_shachenbao);
+//                weather_imgW.setImageResource(R.drawable.biz_plugin_weather_shachenbao);
+
                 break;
             case "特大暴雨":
                 weatherImg.setImageResource(R.drawable.biz_plugin_weather_tedabaoyu);
+//                weather_imgW.setImageResource(R.drawable.biz_plugin_weather_tedabaoyu);
+
                 break;
             case "雾":
                 weatherImg.setImageResource(R.drawable.biz_plugin_weather_wu);
+//                weather_imgW.setImageResource(R.drawable.biz_plugin_weather_wu);
+
                 break;
             case "小雪":
                 weatherImg.setImageResource(R.drawable.biz_plugin_weather_xiaoxue);
+//                weather_imgW.setImageResource(R.drawable.biz_plugin_weather_xiaoxue);
+
                 break;
             case "小雨":
                 weatherImg.setImageResource(R.drawable.biz_plugin_weather_xiaoyu);
+//                weather_imgW.setImageResource(R.drawable.biz_plugin_weather_xiaoyu);
+
                 break;
             case "阴":
                 weatherImg.setImageResource(R.drawable.biz_plugin_weather_yin);
+//                weather_imgW.setImageResource(R.drawable.biz_plugin_weather_yin);
+
                 break;
             case "雨夹雪":
                 weatherImg.setImageResource(R.drawable.biz_plugin_weather_yujiaxue);
+//                weather_imgW.setImageResource(R.drawable.biz_plugin_weather_yujiaxue);
+
                 break;
             case "阵雪":
                 weatherImg.setImageResource(R.drawable.biz_plugin_weather_zhenxue);
+//                weather_imgW.setImageResource(R.drawable.biz_plugin_weather_zhenxue);
+
                 break;
             case "阵雨":
                 weatherImg.setImageResource(R.drawable.biz_plugin_weather_zhenyu);
+//                weather_imgW.setImageResource(R.drawable.biz_plugin_weather_zhenyu);
+
                 break;
             case "中雪":
                 weatherImg.setImageResource(R.drawable.biz_plugin_weather_zhongxue);
+//                weather_imgW.setImageResource(R.drawable.biz_plugin_weather_zhongxue);
+
                 break;
             case "中雨":
                 weatherImg.setImageResource(R.drawable.biz_plugin_weather_zhenyu);
+//                weather_imgW.setImageResource(R.drawable.biz_plugin_weather_zhenyu);
+
                 break;
             default:
                 break;
@@ -967,7 +1011,15 @@ public class mainActivity extends Activity implements View.OnClickListener,ViewP
         pmQualityTv.setText(todayWeather.getQuality());
         weekTv.setText(todayWeather.getDate());
         temperatureTv.setText(todayWeather.getHigh()+"~"+todayWeather.getLow());
+//        temperatureW.setText(todayWeather.getHigh()+"~"+todayWeather.getLow());
+        SharedPreferences settings1 = (SharedPreferences)getSharedPreferences("config", MODE_PRIVATE);
+        SharedPreferences.Editor editor1 = settings.edit();
+        editor.putString("temperatureTv",todayWeather.getHigh()+"~"+todayWeather.getLow());
+        editor.commit();
+
         climateTv.setText(todayWeather.getType());
+//        climateW.setText(todayWeather.getType());
+
         windTv.setText("风力:"+todayWeather.getFengli());
         fengxiangTv.setText(todayWeather.getFengxiang());
         ProgressBar mUpadeprogress=(ProgressBar)findViewById(R.id.title_update_btn_progress);
@@ -975,6 +1027,9 @@ public class mainActivity extends Activity implements View.OnClickListener,ViewP
         View view1=(View)findViewById(R.id.title_update_btn);
         view1.setVisibility(view1.VISIBLE);
         Toast.makeText(mainActivity.this,"更新成功！",Toast.LENGTH_SHORT).show();
+
+
+
     }
 
     @Override
@@ -997,4 +1052,25 @@ public class mainActivity extends Activity implements View.OnClickListener,ViewP
     public void onPageScrollStateChanged(int state) {
 
     }
+
+    public void onBroadcastTtent(View v){
+        Intent intent=new Intent();
+        intent.setAction("APPWIDGET_UPDATE");
+        sendBroadcast(intent);
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

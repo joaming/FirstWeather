@@ -42,7 +42,8 @@
             android:layout_alignParentRight="true"
             android:layout_gravity="center"
             android:src="@drawable/title_update"
-            android:visibility="visible" />
+            android:visibility="visible"
+            android:onClick="onBroadcastIntent"/>
         <ProgressBar
             android:id="@+id/title_update_btn_progress"
             android:layout_width="45.0dip"
